@@ -45,4 +45,31 @@ describe(Stylist) do
       expect(Stylist.all()).to(eq([test_stylist]))
     end
   end
+
+  describe("#add_client") do
+    it("will add its id in the clients table in DB for the client argument") do
+      test_stylist = Stylist.new({:name => "Mark", :id => 3})
+      test_stylist.save()
+      test_client = Client.new({:name => "Sue"})
+      test_client.save()
+      test_stylist.add_client(test_client)
+      expect(test_stylist.clients()).to(eq([test_client]))
+    end
+  end
+
+  describe("#clients") do
+    it("will return an array of client objects that go to the stylist") do
+      test_stylist = Stylist.new({:name => "Mark", :id => 3})
+      test_stylist.save()
+      test_client1 = Client.new({:name => "Sue"})
+      test_client1.save()
+      test_stylist.add_client(test_client1)
+      test_client2 = Client.new({:name => "Sam"})
+      test_client2.save()
+      test_stylist.add_client(test_client2)
+      expect(test_stylist.clients()).to(eq([test_client1, test_client2]))
+    end
+  end
+
+
 end
