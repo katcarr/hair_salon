@@ -29,7 +29,15 @@ describe(Client) do
         test_client.save()
         expect(Client.all()).to(eq([test_client]))
       end
+
+      it("writes to id the id it was assinged in the database ") do
+        test_client = Client.new({:name => "Sue", :id => nil})
+        test_client.save()
+        expect(test_client.id()).to(be_an_instance_of(Fixnum))
+      end
   end
+
+
 
   describe(".all") do
     it("will return an array of all client objects that have been saved to DB") do

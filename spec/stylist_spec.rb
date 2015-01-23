@@ -29,6 +29,13 @@ describe(Stylist) do
       test_stylist.save()
       expect(Stylist.all()).to(eq([test_stylist]))
     end
+
+    it("writes to id the id it was assinged in the database ") do
+      test_stylist = Client.new({:name => "Mark", :id => nil})
+      test_stylist.save()
+      expect(test_stylist.id()).to(be_an_instance_of(Fixnum))
+    end
+
   end
 
   describe(".all") do
