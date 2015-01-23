@@ -1,1 +1,22 @@
 <h1>Welcome To Grace Harry Salon's Stylist Clinet Managment App</h1>
+
+
+<h3>Add A Stylist Below</h3>
+<form action='/added_stylist' method = "post">
+  <div class = 'form-group'>
+    <label for="name">Stylist Name</label>
+    <input id="name" name="name" class="form_control" type = "text" >
+  </div>
+  <button class="btn" type="submit" >Add Stylist</button>
+</form>
+
+<% if @stylists.any?() %>
+  <h3>Stylists at Grace Harry's</h3>
+
+  <ul>
+    <% @stylists.each() do |stylist|%>
+    <h4><%= stylist.name()%></h4>
+  <% end %>
+  </ul>
+
+<% end %>
