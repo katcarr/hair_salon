@@ -11,7 +11,7 @@ class Stylist
   end
 
   define_method(:save) do
-    result = DB.exec("INSERT INTO stylists (name) VALUES ('#{name}') RETURNING id;")
+    result = DB.exec("INSERT INTO stylists (name) VALUES ('#{@name}') RETURNING id;")
     @id = result.first().fetch("id").to_i()
   end
 

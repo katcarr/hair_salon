@@ -1,4 +1,4 @@
-<h1>Welcome To Grace Harry Salon's Stylist Clinet Managment App</h1>
+<h1>Welcome To Grace Harry Salon's Stylist Clinet Management App</h1>
 
 
 <h3>Add A Stylist Below</h3>
@@ -11,11 +11,11 @@
 </form>
 
 <% if @stylists.any?() %>
-  <h3>Stylists at Grace Harry's</h3>
+  <h3>Stylists at Grace Harry</h3>
 
   <ul>
     <% @stylists.each() do |stylist|%>
-    <h4><%= stylist.name()%></h4>
+    <h4><a href="/stylist/<%= stylist.id() %>"><%= stylist.name()%></a></h4>
   <% end %>
   </ul>
 

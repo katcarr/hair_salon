@@ -1,0 +1,24 @@
+<h1>Welcome to <%= @stylist.name().capitalize() %>'s page</h1>
+
+<h3>Add A Client Below for <%=  @stylist.name().capitalize() %></h3>
+<form action='/added_client' method = "post">
+  <div class = 'form-group'>
+    <input type = "hidden" id= "stylist_id" name = "stylist_id" value ="<%= @stylist.id()%>">
+    <label for="name">Client Name</label>
+    <input id="name" name="name" class="form_control" type = "text" >
+  </div>
+  <button class="btn" type="submit" >Add Client</button>
+</form>
+
+<% if @clients.any?() %>
+<h3><%= @stylist.name().capitalize() %>'s Clients</h3>
+
+<ul>
+  <% @clients.each() do |client|%>
+  <h4><%= client.name()%></h4>
+  <% end %>
+</ul>
+
+<% end %>
+
+<a type ="button" href="/">Return to Grace Harry's Main Page</a>
